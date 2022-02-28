@@ -1,0 +1,124 @@
+ Sales Portfolio of Winfex Store Limited Project
+Here we will be building a comprehensive dashboard [Dynamic report] in Power BI Desktop. To create this extensive dashboard 3 major 
+components of Power BI which include, Power Query for data extraction and transformation,Power BI Report View to create interactive visuals and Power BI Service to publish our
+report on the service account in your respective workspace. 
+There are 4 core pillars to create your dashboard or report in Power BI from getting the dataset to creating an attractive report.
+1. Extraction: (Data from the data source)
+2. Transformation & Modelling (Build table relationship)
+3. Calculation (Data massaging, Calculated fields, Measures and KPIs)
+4. Visualization (Interactive, dynamic, and structured visuals) 
+In this Final Project we will be going to use all the pillars to create an advance report view in order to analyze Sales Portfolio of Winfex Store Limited. 
+Winfex Store Limited is the UK based food & drinks products wholesaler wherein they provide products of food and drinks to various customers across the country. Unlike every 
+firm across the world wants to expand its business operations, needs to look back to its historical performance and business cycle in a way that it will provide some meaningful 
+information to take the strategic and informed decision for their expansion.Owner of Winfex wants to outsource this task, to analyze the trend, pattern, forecast,sales analysis, 
+the performance of salespersons, team performance & its measures etc.
+Furthermore, to comprehend their business we’ve two tables in which data of Winfex -Revenue Info (sales report) and Winfex - Product information is kept. 
+In Revenue Info Sheet - Sales report data -consist the information about how and when the orders are placed, and the quantity & number of sales made. This report essentially
+has focused on the performance of every sales employees horizontal and vertical performance.
+Winfex Store Limited Project
+Data Definition of Revenue sheet is given below:
+Order Date: when the order is placed.
+Due Date: what is the due date to deliver the product.
+Order Number: unique order number and reference
+Product ID: specific product ID for each type of product
+Salesperson ID: unique salesperson ID
+Salesperson: salesperson name
+Supervisor: supervisor under which salespersons works
+Team: department or vertical 
+Qty Items: no of quantity ordered.
+Unit Price: unit price to sale (for each) in dollars.
+Sales Amount: total sales amount in dollars
+The second sheet that we’ve is Winfex - Product Info– wherein details about the product line of Winfex Store Limited deals is given. What all products they’ve, category of
+product, which group they belongs to, Products Cost sheet and the details of suppliers.
+Below are the details of each attribute:
+Product ID: product ID for each product 
+Product: product along with product id
+Group: group of product or name
+Category: category or type of each product whether it is food or drink
+Supplier: name of the suppliers 
+Unit Cost: the cost price of each product in dollars.
+
+Phase 1: Extraction:
+• Data extraction is a process that involves the retrieval of data from various sources. 
+Extract data in order to process it further, migrate the data to a data repository (such as a data warehouse or a data lake) or to further analyze it. And in order to extract
+the data for our Project, Power Query is a quite powerful tool for quick data extracts and transformations from the web or any other source. The best part is that it is all
+based in Excel which does not require prior extensive knowledge of any programming language or ETL processes. just find a cool dataset on the web and load it into Power Query.
+• One by one import ‘Winfex - Product Info & Winfex – Revenue Info’ sheet as transform data.
+• First – after importing the Revenue sheet, clean the data for better use of calculation and visualization. For e.g. clear unwanted rows, change data type, headers etc.
+• Convert the Revenue sheet as below image:
+• ‘Product Table’ – change the table name from dProduct to Product.
+• Now we have 2 tables or queries, let us start building the relationship between these 2 queries. Autodetect during load
+When we bring two or more than two tables at the same time, Power BI Desktop attempts to find and create relationships automatically for you. The relationship options 
+Cardinality, Cross filter direction, and Make this relationship active are automatically set. Power BI Desktop looks at column names in the tables you are querying to determine
+if there are any potential relationships. If there are, those relationships are created automatically. If Power BI Desktop cannot determine with a high level of confidence
+there's a match, it doesn't create the relationship. However, you can still use the Manage relationships dialog box to manually create or edit relationships.
+• In our case we’ve matching column ‘Product ID’ in both the table, however the data is not similar in columns.clean the data, and establish a relationship between these two
+tables.
+
+Phase 2: Transformation & Modeling:
+• Whenever we connect to a data source and to use data, usually it is very known and we can say “raw” because there is a lot of information that may or may not need, structured
+or not, so we have always to prepare them by using Power Query, that we can call a “magic box” since it is where we structure and “clean” (transform) our data.
+• As we can see, we got sales amount, quantity sold and selling price as well, but we do not know what is the actual cost that company has incurred on each order. Using M 
+function create a new column named ‘Cost Price’ and get the cost price on each order.
+After the new column ‘Cost Price’ our Revenue table will look like:
+Most of the time in Power BI we will work with data models that contain data from multiple tables that must be connected through relationships. Well prepared and through tables
+that are connected by relationships that are required between these tables to function together to allow visualizations to be sliced and diced by data from different tables.
+In our case, we have already established a relationship in the Revenue and Product table based on ‘Product ID’ which is one to many relationships.
+When configuring a One-to-many or Many-to-one relationship, will choose the one that matches the order in which you relate the columns. Consider how you would configure the 
+relationship from the Product table to the Sales table by using the ProductID column found in each table. The cardinality type would be One-to-many, as the ProductID column 
+in the Product table contains unique values.
+
+Phase 3: Calculation: 
+In this section we will create some dynamic measures, calculated columns and conditional columns in Power Query editor window based on the requirement mentioned below:
+• Add new column ‘Delivery time Span’ that will show, how much time is taken by each order to deliver the product to the potential client based on the ‘Due Date’.
+• Update the data type of ‘Unit Price’ and ‘Sales Amount’ to ‘Currency – $ English Dollar’.
+• Create one new query name ‘Revenue Calculation’ and merge all the columns of ‘Revenue’ table into it and ‘Team, Group, Category and Unit Cost’ from the ‘Product Table’ into it.
+• Calculate ‘Cost Amount’ in a new column.
+• Add one new column and calculate Gross Margin which essentially tells you about the margin’s spare by firm on each sale of product.
+• There is tax which deducted on each project sales, that amount 12.8% of their entire gross margin which Winfex must pay. Calculate the same as well.
+• Now, Calculate PAT (Profit after Tax) after deducting Tax.
+• Add another column ‘Gross Margin Status’ wherein you have the specific criteria.
+o If gross margin % is in ‘0 to 30%’ it’s – ‘Low’
+o If gross margin % is ‘30% to 55%’ its – ‘Average’
+o If gross margin % is ‘Above 55% it’s – ‘High’
+• Create one duplicate sheet include all expression that we have done till now, name ‘Revenue Calculation – 1’ and hide it from the view of Power BI Report to maintain the
+work simplicity.
+
+Phase 4: Visualization: 
+The main idea of dashboards is they must give the answer which has been looked for just by looking at the analysis, without explaining or any question. It must always be easy to 
+understand.
+• In order to create the final report or Dashboard of Winfex Store Limited.
+• Create 4 visuals to understand the company’s financial and operational performance.
+1. Display the company’s sales throughout the year 2020 on the Multiple Line chart.
+2. Financial performance can be appropriate & recommended to show with numbers, hence create one matrix which shows the data of sales, Net profitand gross margin percent based
+on the company’s each supplier. Additionally, append ‘Group’ below suppliers so that end user can drill downthe matrix to see the added information.
+3. In order to compare and identify the relationship between 2 numeric variables, we use Scatter plot. Draw scatter plot to show the details of ‘Group’ wherein, it shows Sales
+& Gross Margin on X & Y axis, respectively. Make the size dynamic by Quantity ordered and ‘Team’ as legends.
+4. Draw one donut in middle, based on sales made under each supervisor. Turn of the legends and enable detailed data labels.
+• What do you understand by filters? 
+Filters in Power BI sort data and information based on some selected criteria. That is, you can select particular fields or values within fields and view only the information 
+related to that. In the given case, to make your report more interactive create 2 filter of ‘Order Date-Month only’, & ‘Category’. All filters style should be in dropdown 
+selection so that they can compressed easily and displayed structured in your report.
+• Sometimes a single number is the most important thing you want to track in your Power BI dashboard or report, such as total sales, market share year over year, or total 
+opportunities. This type of visualization is called a Card. 
+Draw 4 cards in your report:
+1. Sum of Total Sales.
+2. Sum of Net Profit. 
+3. Sum of Total Cost.
+4. Draw a text card, wherein you can show the name of highest sale made by the group, Top-1.
+5. Add another text card which shows least Net Profit.
+6. Also add one more card that shows, Average Delivery Time.
+• Create one more filter for ‘Group’ with Horizontal orientation and place it at the bottom of the report.
+
+• Formatting rules:
+1. Page size – 1700 width and 1000 height. 
+2. Disable background for all the visuals.
+3. Heading of all the visuals should be in ‘Segoe Bold’ font with ‘text size 16’.
+4. Card’s category text size should be 17.
+5. Both the filters of ‘Order Date-Month only’ & ‘Category’– Disable the Slicer Header, Item- 14, Title – central aligned, Font size -17, and with Segoe Bold font.
+6. Border should be enabled. For visuals – with the Radius of 15px and Black color and for Filters – with the Radius of 30px and black in colors.
+7. All the visuals, filters, and card are displayed under the ‘Rectangle Shape’, arrange the shape – Send to back. Disable the background of all the shapes, shadow on along
+with 50% transparency.
+8. Labels should be on with font size 12 and color black.
+9. Name report ‘Winfex Store Limited – Sales Data Analysis’ at top left 
+corner, with transparent text box and with ‘sales-analytics’ icon.
